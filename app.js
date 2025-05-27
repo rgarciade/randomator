@@ -35,6 +35,7 @@ function addOption() {
         console.log('Current options:', options);
         renderOptions();
         newOptionInput.value = '';
+        updateClearButtonVisibility();
     }
 }
 
@@ -58,6 +59,7 @@ function clearOptions() {
         showMainView();
     }
     
+    updateClearButtonVisibility();
     console.log('Clear operation completed');
 }
 
@@ -75,6 +77,7 @@ function renderOptions() {
         `;
         optionsList.appendChild(optionElement);
     });
+    updateClearButtonVisibility();
     console.log('Options rendered');
 }
 
@@ -118,4 +121,15 @@ function showMainView() {
     mainView.classList.remove('hidden');
     // Remove animation when going back
     winnerText.className = 'text-[#181811] text-[48px] font-bold leading-tight tracking-[-0.015em] text-center';
-} 
+}
+
+function updateClearButtonVisibility() {
+    if (options.length > 0) {
+        clearOptionsBtn.style.display = '';
+    } else {
+        clearOptionsBtn.style.display = 'none';
+    }
+}
+
+// Inicializar visibilidad al cargar
+updateClearButtonVisibility(); 

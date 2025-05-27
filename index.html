@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
     <link
       rel="stylesheet"
@@ -10,7 +11,7 @@
     />
 
     <title>Randomator 3000</title>
-    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cellipse cx='32' cy='54' rx='20' ry='6' fill='%23333'/%3E%3Cpath d='M32 8 C40 10, 52 36, 32 44 C12 36, 24 10, 32 8 Z' fill='%234b3f72' stroke='%23181811' stroke-width='2'/%3E%3Cellipse cx='32' cy='38' rx='12' ry='4' fill='%23f8f406' stroke='%23181811' stroke-width='1'/%3E%3Ccircle cx='38' cy='22' r='2' fill='%23fff'/%3E%3Ccircle cx='28' cy='18' r='1.5' fill='%23fff'/%3E%3Ccircle cx='35' cy='30' r='1' fill='%23fff'/%3E%3C/svg%3E">
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style>
@@ -65,6 +66,58 @@
       .animate-zoom-custom {
         animation: zoom 0.5s ease-out 1;
       }
+
+      /* --- RESPONSIVE MOBILE STYLES --- */
+      @media (max-width: 600px) {
+        body {
+          font-size: 18px;
+        }
+        input, button {
+          font-size: 16px !important;
+          width: 100%;
+          box-sizing: border-box;
+        }
+        h2, label {
+          font-size: 20px !important;
+        }
+        .flex {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .min-w-[84px], .max-w-[480px] {
+          min-width: 0 !important;
+          max-width: 100% !important;
+        }
+        .h-10, .h-12, .h-14 {
+          height: 48px !important;
+        }
+        .px-4, .px-5 {
+          padding-left: 10px !important;
+          padding-right: 10px !important;
+        }
+        .py-3 {
+          padding-top: 10px !important;
+          padding-bottom: 10px !important;
+        }
+        #randomizeBtn {
+          margin-top: 24px !important;
+          margin-bottom: 24px !important;
+          padding-top: 6px !important;
+          padding-bottom: 6px !important;
+          font-size: 22px !important;
+          height: 60px !important;
+          min-width: 100% !important;
+          max-width: 100% !important;
+          box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08);
+          border-radius: 9999px !important;
+          border-width: 2px !important;
+          border-color: #f8f406 !important;
+        }
+        #newOption {
+          font-size: 18px !important;
+          max-width: 100% !important;
+        }
+      }
     </style>
   </head>
   <body>
@@ -75,18 +128,18 @@
       <!-- Main View -->
       <div id="mainView">
         <div class="flex items-center bg-white p-4 pb-2 justify-between">
-          <h2 class="text-[#181811] text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pl-12">Randomator 3000</h2>
+          <h2 class="text-[#181811] text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Randomator 3000</h2>
           <div class="flex w-12 items-center justify-end">
             <!-- Empty div to maintain layout -->
             <div class="w-12"></div>
           </div>
         </div>
         <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3 justify-center mx-auto">
-          <label class="flex flex-col min-w-40 flex-1">
+          <label class="flex flex-col min-w-40 flex-1 items-center w-full">
             <input
               id="newOption"
               placeholder="Ingresa una nueva opci&oacute;n"
-              class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#181811] focus:outline-0 focus:ring-0 border border-[#e6e6db] bg-white focus:border-[#e6e6db] h-14 placeholder:text-[#8c8b5f] p-[15px] text-base font-normal leading-normal"
+              class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#181811] focus:outline-0 focus:ring-0 border border-[#e6e6db] bg-white focus:border-[#e6e6db] h-14 placeholder:text-[#8c8b5f] p-[15px] text-base font-normal leading-normal max-w-md mx-auto"
               value=""
             />
           </label>
@@ -114,7 +167,7 @@
       <!-- Result View (Hidden by default) -->
       <div id="resultView" class="hidden">
         <div class="flex items-center bg-white p-4 pb-2 justify-between">
-          <h2 class="text-[#181811] text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pl-12">Randomator 3000</h2>
+          <h2 class="text-[#181811] text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Randomator 3000</h2>
           <div class="flex w-12 items-center justify-end">
             <button
               id="backBtn"
@@ -135,10 +188,10 @@
       </div>
 
       <div>
-        <div class="flex px-4 py-3 justify-center">
+        <div class="flex px-4 py-3 justify-center mt-6 mb-6">
           <button
             id="randomizeBtn"
-            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-5 flex-1 bg-[#f8f406] text-[#181811] text-base font-bold leading-normal tracking-[0.015em]"
+            class="flex min-w-[200px] max-w-[600px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-16 px-8 py-[6px] flex-1 bg-[#f8f406] text-[#181811] text-xl font-bold leading-normal tracking-[0.015em] shadow-sm border-2 border-[#f8f406]"
           >
             <span class="truncate">Seleccionar Opci&oacute;n Aleatoria</span>
           </button>
