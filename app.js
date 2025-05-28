@@ -22,6 +22,7 @@ randomizeBtn.addEventListener('click', showRandomResult);
 backBtn.addEventListener('click', showMainView);
 newOptionInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' || e.keyCode === 13) {
+        e.preventDefault();
         addOption();
     }
 });
