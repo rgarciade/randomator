@@ -20,8 +20,8 @@ clearOptionsBtn.addEventListener('click', () => {
 });
 randomizeBtn.addEventListener('click', showRandomResult);
 backBtn.addEventListener('click', showMainView);
-newOptionInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
+newOptionInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.keyCode === 13) {
         addOption();
     }
 });
